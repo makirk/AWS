@@ -265,7 +265,7 @@
         "RuleAction" : "allow",
         "Egress" : "false",
         "CidrBlock" : "0.0.0.0/0",
-        "PortRange" : {"From" : "8080", "To" : "8080"}
+        "PortRange" : {"From" : "80", "To" : "80"}
       }
     },
 
