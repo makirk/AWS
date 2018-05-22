@@ -268,32 +268,7 @@
         "PortRange" : {"From" : "80", "To" : "80"}
       }
     },
-
-    "InboundSSHNetworkAclEntry" : {
-      "Type" : "AWS::EC2::NetworkAclEntry",
-      "Properties" : {
-        "NetworkAclId" : {"Ref" : "NetworkAcl"},
-        "RuleNumber" : "101",
-        "Protocol" : "6",
-        "RuleAction" : "allow",
-        "Egress" : "false",
-        "CidrBlock" : "0.0.0.0/0",
-        "PortRange" : {"From" : "22", "To" : "22"}
-      }
-    },
-
-    "InboundResponsePortsNetworkAclEntry" : {
-      "Type" : "AWS::EC2::NetworkAclEntry",
-      "Properties" : {
-        "NetworkAclId" : {"Ref" : "NetworkAcl"},
-        "RuleNumber" : "102",
-        "Protocol" : "6",
-        "RuleAction" : "allow",
-        "Egress" : "false",
-        "CidrBlock" : "0.0.0.0/0",
-        "PortRange" : {"From" : "1024", "To" : "65535"}
-      }
-    },
+    
 
     "OutBoundHTTPNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
@@ -308,18 +283,6 @@
       }
     },
 
-    "OutBoundHTTPSNetworkAclEntry" : {
-      "Type" : "AWS::EC2::NetworkAclEntry",
-      "Properties" : {
-        "NetworkAclId" : {"Ref" : "NetworkAcl"},
-        "RuleNumber" : "101",
-        "Protocol" : "6",
-        "RuleAction" : "allow",
-        "Egress" : "true",
-        "CidrBlock" : "0.0.0.0/0",
-        "PortRange" : {"From" : "443", "To" : "443"}
-      }
-    },
 
     "OutBoundResponsePortsNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
@@ -431,7 +394,7 @@
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
         "InstanceType" : { "Ref" : "InstanceType" },
         "KeyName" : { "Ref" : "KeyName" },
-        "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ],
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-1" } ],
         "NetworkInterfaces" : [{
           "GroupSet"                 : [{ "Ref" : "InstanceSecurityGroup" }],
           "AssociatePublicIpAddress" : "true",
