@@ -203,7 +203,7 @@
       "Properties" : {
         "VpcId" : { "Ref" : "VPC" },
         "CidrBlock" : "10.0.0.0/24",
-        "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-2" } ]
       }
     },
 
