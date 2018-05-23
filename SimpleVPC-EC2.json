@@ -348,7 +348,6 @@
       "Properties" : {
         "Domain" : "vpc",
         "InstanceId" : { "Ref" : "WebServerInstance" },
-        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-4" } ]
       }
     },
 
