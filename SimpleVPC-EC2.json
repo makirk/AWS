@@ -194,7 +194,7 @@
       "Type" : "AWS::EC2::VPC",
       "Properties" : {
         "CidrBlock" : "10.0.0.0/16",
-        "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-2" } ]
       }
     },
 
@@ -210,7 +210,7 @@
     "InternetGateway" : {
       "Type" : "AWS::EC2::InternetGateway",
       "Properties" : {
-        "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+      "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-3" } ]
       }
     },
 
@@ -226,7 +226,7 @@
       "Type" : "AWS::EC2::RouteTable",
       "Properties" : {
         "VpcId" : {"Ref" : "VPC"},
-        "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-3" } ]
       }
     },
 
@@ -252,7 +252,7 @@
       "Type" : "AWS::EC2::NetworkAcl",
       "Properties" : {
         "VpcId" : {"Ref" : "VPC"},
-        "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-4" } ]
       }
     },
 
@@ -347,7 +347,8 @@
       "DependsOn" : "AttachGateway",
       "Properties" : {
         "Domain" : "vpc",
-        "InstanceId" : { "Ref" : "WebServerInstance" }
+        "InstanceId" : { "Ref" : "WebServerInstance" },
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-4" } ]
       }
     },
 
@@ -355,6 +356,7 @@
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
         "VpcId" : { "Ref" : "VPC" },
+        "Tags" : [ {"Key" : "FS ID#", "Value" : "FS-3" } ],
         "GroupDescription" : "Enable SSH access via port 22",
         "SecurityGroupIngress" : [
           {"IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"}},
